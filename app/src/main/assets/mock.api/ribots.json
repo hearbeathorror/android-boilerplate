@@ -1,0 +1,123 @@
+[{
+	"profile": {
+		"id": "d712923e-62a1-11e5-9d70-feff819cdc9f",
+		"email": "trevor@ribot.co.uk",
+		"avatar": "https://s3-eu-west-1.amazonaws.com/api.ribot.io/trevor_big.png",
+		"dateOfBirth": "1990-01-01T00:00:00.000Z",
+		"hexColor": "#B60042",
+		"bio": "Trevor crafts elegant multi-device experiences with pixels and magic while tanked up on artisan coffee and Col-Erase pencil shaving fumes. He can also be found going on about Disneyland (again), playing video games terribly, or drawing a face on something.",
+		"isActive": true,
+		"name": {
+			"first": "Trevor",
+			"last": "May"
+		}
+	}
+}, {
+	"profile": {
+		"id": "c6c4a200-62a1-11e5-9d70-feff819cdc9f",
+		"email": "lindsay@ribot.co.uk",
+		"avatar": "https://s3-eu-west-1.amazonaws.com/api.ribot.io/lindsay_big.png",
+		"dateOfBirth": "1990-01-01T00:00:00.000Z",
+		"hexColor": "#ecc973",
+		"bio": "With a passion for people at her core, Lindsay rides around on her Vespa, organising, solving and fixing everything in her path, whilst singing about it all in sweet Motown style - she's in a cool band, y'know. Lindsay's driven by a need to help make the lives of others as easy as possible — no matter the task! L to the I-N-D-S-A-Y! Go Lindsay!! *CLAP*-*CLAP* *CLAP* Go Lindsay!!",
+		"isActive": true,
+		"name": {
+			"first": "Lindsay",
+			"last": "Scott"
+		}
+	}
+}, {
+	"profile": {
+		"id": "a2453c0a-62a1-11e5-9d70-feff819cdc9f",
+		"email": "ben@ribot.co.uk",
+		"avatar": "https://s3-eu-west-1.amazonaws.com/api.ribot.io/ben_big.png",
+		"dateOfBirth": "1990-01-01T00:00:00.000Z",
+		"hexColor": "#3b9d90",
+		"bio": "Ben is most often found with a pen in hand and a large sheet of paper before him. Turning complicated concepts into simple but stunning motion designs, taking ideas and sketching concepts which in turn get lovingly crafted into great looking user interfaces.",
+		"isActive": true,
+		"name": {
+			"first": "Ben",
+			"last": "Breckler"
+		}
+	}
+}, {
+	"profile": {
+		"id": "d3b873b0-62a1-11e5-9d70-feff819cdc9f",
+		"email": "tara@ribot.co.uk",
+		"avatar": "https://s3-eu-west-1.amazonaws.com/api.ribot.io/tara_big.png",
+		"dateOfBirth": "1990-01-01T00:00:00.000Z",
+		"hexColor": "#dc334c",
+		"bio": "Living and breathing art and design, Tara turns concepts and visions into glorious graphics and exciting user experiences. Her passion is making the world a better place, enriching the lives of others with great design. When not scribbling and crafting, she's surfing and climbing.",
+		"isActive": true,
+		"name": {
+			"first": "Tara",
+			"last": "Etherington"
+		}
+	}
+}, {
+	"profile": {
+		"id": "a913001c-62a1-11e5-9d70-feff819cdc9f",
+		"email": "antony@ribot.co.uk",
+		"avatar": "https://s3-eu-west-1.amazonaws.com/api.ribot.io/antony_big.png",
+		"dateOfBirth": "1990-01-01T00:00:00.000Z",
+		"hexColor": "#e48c34",
+		"bio": "Co-founder of ribot, Antony is inspired by human behaviour, natural systems and good food. When not thinking about what's for dinner, Antony loves to ponder the possibilities of the latest phones, tablets and tech; imagining what's just over the horizon and shaping the team ribot vision.",
+		"isActive": true,
+		"name": {
+			"first": "Antony",
+			"last": "Ribot"
+		}
+	}
+}, {
+	"profile": {
+		"id": "dd720b46-62a1-11e5-9d70-feff819cdc9f",
+		"email": "jemma@ribot.co.uk",
+		"avatar": "https://s3-eu-west-1.amazonaws.com/api.ribot.io/jemma_big.png",
+		"dateOfBirth": "1990-01-01T00:00:00.000Z",
+		"hexColor": "#FF49A0",
+		"isActive": true,
+		"name": {
+			"first": "Jemma",
+			"last": "Slater"
+		}
+	}
+}, {
+	"profile": {
+		"id": "b47fe8ca-f877-4a2c-afb9-fda1b27bee9c",
+		"email": "jo@ribot.co.uk",
+		"dateOfBirth": "2016-05-21T00:00:00.000Z",
+		"hexColor": "#00b3b3",
+		"bio": "Jo is a driving force in understanding what our clients need and want. She makes sure everyone is happy by listening, questioning, collaborating, fixing, and iterating our processes. She does all this calmly and with an air of glamour. When not at ribot you’ll find Jo scouring antique emporiums for rare vintage finds or enjoying a muddy run across the South Downs. Jo is a very social butterfly and loves food, especially tapas and meze.",
+		"isActive": true,
+		"name": {
+			"first": "Jo",
+			"last": "Ross"
+		}
+	}
+}, {
+	"profile": {
+		"id": "fda40b33-d2f0-4290-816d-78911dfbf40c",
+		"email": "kerry@ribot.co.uk",
+		"dateOfBirth": "2016-05-21T00:00:00.000Z",
+		"hexColor": "#d54e4e",
+		"bio": "Kerry is passionate about the art of communication and connecting with people. She is inspired by the great experiences ribot create and is happy to shout about them from the rooftops, although we usually encourage her to stay inside and write about us instead. Outside of ribot you’ll find Kerry trying to curb her chocolate cravings with the latest exercise fad or indulging in a spot of retail therapy.",
+		"isActive": true,
+		"name": {
+			"first": "Kerry",
+			"last": "Manley"
+		}
+	}
+}, {
+	"profile": {
+		"id": "9b526a80-48d0-4cd6-b686-4b34bb058311",
+		"email": "luis@ribot.co.uk",
+		"dateOfBirth": "2016-08-12T00:00:00.000Z",
+		"hexColor": "#5D9F01",
+		"bio": "",
+		"isActive": true,
+		"name": {
+			"first": "Luis",
+			"last": "Abreu"
+		}
+	}
+}]

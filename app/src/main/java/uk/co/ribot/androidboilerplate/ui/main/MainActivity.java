@@ -2,9 +2,13 @@ package uk.co.ribot.androidboilerplate.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.Collections;
@@ -18,9 +22,11 @@ import uk.co.ribot.androidboilerplate.R;
 import uk.co.ribot.androidboilerplate.data.SyncService;
 import uk.co.ribot.androidboilerplate.data.model.Ribot;
 import uk.co.ribot.androidboilerplate.ui.base.BaseActivity;
+import uk.co.ribot.androidboilerplate.ui.ribot.RibotActivity;
+import uk.co.ribot.androidboilerplate.ui.ribot.ViewInteractionListener;
 import uk.co.ribot.androidboilerplate.util.DialogFactory;
 
-public class MainActivity extends BaseActivity implements MainMvpView {
+public class MainActivity extends BaseActivity implements MainMvpView, ViewInteractionListener {
 
     private static final String EXTRA_TRIGGER_SYNC_FLAG =
             "uk.co.ribot.androidboilerplate.ui.main.MainActivity.EXTRA_TRIGGER_SYNC_FLAG";
@@ -69,13 +75,14 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void showRibots(List<Ribot> ribots) {
+        mRibotsAdapter.setViewInteractionListener(this);
         mRibotsAdapter.setRibots(ribots);
         mRibotsAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void showError() {
-        DialogFactory.createGenericErrorDialog(this, getString(R.string.error_loading_ribots))
+        DialogFactory.createSimpleOkErrorDialog(this,"", getString(R.string.error_loading_ribots))
                 .show();
     }
 
@@ -86,4 +93,16 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         Toast.makeText(this, R.string.empty_ribots, Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public void onItemClick(@Nullable final String email, View view) {
+        final ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(this, view,
+                        getString(R.string.transition_name));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            startActivity(RibotActivity.getStartIntent(this, email), options.toBundle());
+        } else {
+            startActivity(RibotActivity.getStartIntent(this, email));
+        }
+    }
 }

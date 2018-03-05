@@ -48,4 +48,9 @@ public class DataManager {
         return mDatabaseHelper.getRibots().distinct();
     }
 
+    public Observable<Ribot> getRibot(final String email) {
+        return mDatabaseHelper.getRibot(email);
+    }
+
+
 }

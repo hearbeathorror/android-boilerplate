@@ -76,4 +76,16 @@ public class DatabaseHelper {
                 });
     }
 
+    public Observable<Ribot> getRibot(final String email) {
+        return mDb.createQuery(Db.RibotProfileTable.TABLE_NAME,
+                "SELECT * FROM " + Db.RibotProfileTable.TABLE_NAME +
+                        " WHERE " + Db.RibotProfileTable.COLUMN_EMAIL + "='" + email + "'")
+                .mapToOne(new Function<Cursor, Ribot>() {
+                    @Override
+                    public Ribot apply(final Cursor cursor) throws Exception {
+                        return Ribot.create(Db.RibotProfileTable.parseCursor(cursor));
+                    }
+                });
+    }
+
 }

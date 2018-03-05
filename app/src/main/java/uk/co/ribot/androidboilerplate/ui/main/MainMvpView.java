@@ -12,5 +12,4 @@ public interface MainMvpView extends MvpView {
     void showRibotsEmpty();
 
     void showError();
-
 }

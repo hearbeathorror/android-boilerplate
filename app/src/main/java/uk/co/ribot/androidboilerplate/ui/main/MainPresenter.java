@@ -71,5 +71,4 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
                     }
                 });
     }
-
 }

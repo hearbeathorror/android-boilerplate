@@ -7,9 +7,11 @@ import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
+import uk.co.ribot.androidboilerplate.data.remote.RibotsService;
 import uk.co.ribot.androidboilerplate.injection.component.ApplicationComponent;
 import uk.co.ribot.androidboilerplate.injection.component.DaggerApplicationComponent;
 import uk.co.ribot.androidboilerplate.injection.module.ApplicationModule;
+import uk.co.ribot.androidboilerplate.injection.module.NetModule;
 
 public class BoilerplateApplication extends Application  {
 
@@ -33,6 +35,7 @@ public class BoilerplateApplication extends Application  {
         if (mApplicationComponent == null) {
             mApplicationComponent = DaggerApplicationComponent.builder()
                     .applicationModule(new ApplicationModule(this))
+                    .netModule(new NetModule(RibotsService.BASE_URL))
                     .build();
         }
         return mApplicationComponent;
