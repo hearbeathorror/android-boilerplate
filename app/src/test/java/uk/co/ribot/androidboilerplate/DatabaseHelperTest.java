@@ -77,4 +77,17 @@ public class DatabaseHelperTest {
         result.assertValue(ribots);
     }
 
+    @Test
+    public void testGetRibot() {
+        Ribot ribot1 = TestDataFactory.makeRibot("r1");
+        Ribot ribot2 = TestDataFactory.makeRibot("r2");
+        List<Ribot> ribots = Arrays.asList(ribot1, ribot2);
+
+        mDatabaseHelper.setRibots(ribots).subscribe();
+        TestObserver<Ribot> result = new TestObserver<>();
+        mDatabaseHelper.getRibot("emailr1@ribot.co.uk").subscribe(result);
+        result.assertNoErrors();
+        result.assertValue(ribot1);
+    }
+
 }

@@ -11,6 +11,7 @@ import uk.co.ribot.androidboilerplate.data.DataManager;
 import uk.co.ribot.androidboilerplate.test.common.injection.component.DaggerTestComponent;
 import uk.co.ribot.androidboilerplate.test.common.injection.component.TestComponent;
 import uk.co.ribot.androidboilerplate.test.common.injection.module.ApplicationTestModule;
+import uk.co.ribot.androidboilerplate.test.common.injection.module.NetTestModule;
 
 /**
  * Test rule that creates and sets a Dagger TestComponent into the application overriding the
@@ -20,7 +21,7 @@ import uk.co.ribot.androidboilerplate.test.common.injection.module.ApplicationTe
  * stub mocks etc.
  */
 public class TestComponentRule implements TestRule {
-
+    private final String baseUrl = "http://mock.api";
     private final TestComponent mTestComponent;
     private final Context mContext;
 
@@ -29,6 +30,7 @@ public class TestComponentRule implements TestRule {
         BoilerplateApplication application = BoilerplateApplication.get(context);
         mTestComponent = DaggerTestComponent.builder()
                 .applicationTestModule(new ApplicationTestModule(application))
+                .netTestModule(new NetTestModule(baseUrl))
                 .build();
     }
 
