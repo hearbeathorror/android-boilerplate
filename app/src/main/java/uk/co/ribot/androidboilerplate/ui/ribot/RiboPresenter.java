@@ -16,12 +16,12 @@ import uk.co.ribot.androidboilerplate.util.RxUtil;
 
 @ConfigPersistent
 public class RiboPresenter extends BasePresenter<RiboMvpView> {
-    private final DataManager dataManager;
-    private Disposable disposable;
+    private final DataManager mDataManager;
+    private Disposable mDisposable;
 
     @Inject
     public RiboPresenter(DataManager dataManager) {
-        this.dataManager = dataManager;
+        this.mDataManager = dataManager;
     }
 
     @Override
@@ -32,19 +32,19 @@ public class RiboPresenter extends BasePresenter<RiboMvpView> {
     @Override
     public void detachView() {
         super.detachView();
-        if (disposable != null) disposable.dispose();
+        if (mDisposable != null) mDisposable.dispose();
     }
 
     public void loadRibotDetail(@NonNull final String email) {
         checkViewAttached();
-        RxUtil.dispose(disposable);
-        dataManager.getRibot(email)
+        RxUtil.dispose(mDisposable);
+        mDataManager.getRibot(email)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<Ribot>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        disposable = d;
+                        mDisposable = d;
                     }
 
                     @Override

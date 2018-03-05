@@ -2,8 +2,6 @@ package uk.co.ribot.androidboilerplate.ui.main;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -13,11 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +31,7 @@ public class RibotsAdapter extends RecyclerView.Adapter<RibotsAdapter.RibotViewH
 
     private List<Ribot> mRibots;
     private static final int SIZE = 120;
-    private ViewInteractionListener listener;
+    private ViewInteractionListener mListener;
 
     @Inject
     public RibotsAdapter() {
@@ -45,7 +39,7 @@ public class RibotsAdapter extends RecyclerView.Adapter<RibotsAdapter.RibotViewH
     }
 
     public void setViewInteractionListener(ViewInteractionListener listener) {
-        this.listener = listener;
+        this.mListener = listener;
     }
 
     public void setRibots(List<Ribot> ribots) {
@@ -66,13 +60,15 @@ public class RibotsAdapter extends RecyclerView.Adapter<RibotsAdapter.RibotViewH
                 ribot.profile().name().first(), ribot.profile().name().last()));
         holder.emailTextView.setText(ribot.profile().email());
 
+        final String hexColor = ribot.profile().hexColor();
+
         if (TextUtils.isEmpty(ribot.profile().avatar())) {
-            holder.hexColorView.setBackgroundColor(Color.parseColor(ribot.profile().hexColor()));
+            holder.hexColorView.setBackgroundColor(Color.parseColor(hexColor));
         } else {
             Glide.with(holder.itemView.getContext())
                     .load(ribot.profile().avatar())
                     .apply(new RequestOptions()
-                            .placeholder(new ColorDrawable(Color.parseColor(ribot.profile().hexColor())))
+                            .placeholder(new ColorDrawable(Color.parseColor(hexColor)))
                             .override(SIZE))
                     .into(holder.hexColorView);
         }
@@ -99,7 +95,7 @@ public class RibotsAdapter extends RecyclerView.Adapter<RibotsAdapter.RibotViewH
             if (position == NO_POSITION) {
                 return;
             }
-            listener.onItemClick(mRibots.get(position).profile().email(), itemView);
+            mListener.onItemClick(mRibots.get(position).profile().email(), itemView);
         }
     }
 }

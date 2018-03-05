@@ -113,15 +113,18 @@ public class RibotActivity extends BaseActivity implements RiboMvpView {
 
     @Override
     public void showDetails(final Ribot ribot) {
-        txtUserName.setText(StringUtils.getFullName(ribot.profile().name().first(), ribot.profile().name().last()));
+        txtUserName.setText(StringUtils.getFullName(ribot.profile().name().first(),
+                ribot.profile().name().last()));
         txtBirthDate.setText(StringUtils.getBirthDate(ribot.profile().dateOfBirth()));
         txtUserBio.setText(ribot.profile().bio());
         txtUserEmail.setText(ribot.profile().email());
+
+        final String hexColor = ribot.profile().hexColor();
         Glide.with(getApplicationContext())
                 .load(ribot.profile().avatar())
                 .apply(new RequestOptions()
                         .override(480, 180)
-                        .placeholder(new ColorDrawable(Color.parseColor(ribot.profile().hexColor()))))
+                        .placeholder(new ColorDrawable(Color.parseColor(hexColor))))
                 .into(imgUser);
 
         viewColor.setBackgroundColor(Color.parseColor(ribot.profile().hexColor()));
@@ -129,7 +132,7 @@ public class RibotActivity extends BaseActivity implements RiboMvpView {
 
     @Override
     public void showError(final String message) {
-        DialogFactory.createSimpleOkErrorDialog(this,"", message).show();
+        DialogFactory.createSimpleOkErrorDialog(this, "", message).show();
     }
 
     @OnClick(R.id.txt_email) void onEmailClicked() {

@@ -24,12 +24,12 @@ public class MockInterceptor implements Interceptor {
     private static final String TAG = MockInterceptor.class.getSimpleName();
     private static final String FILE_EXTENSION = ".json";
 
-    private String contentType = "application/json";
+    private String mContentType = "application/json";
 
-    private Context context;
+    private Context mContext;
 
     public MockInterceptor(Application application) {
-        context = application.getApplicationContext();
+        mContext = application.getApplicationContext();
     }
 
     /**
@@ -38,7 +38,7 @@ public class MockInterceptor implements Interceptor {
      * @return FakeInterceptor
      */
     public MockInterceptor setContentType(final String contentType) {
-        this.contentType = contentType;
+        this.mContentType = contentType;
         return this;
     }
 
@@ -62,7 +62,7 @@ public class MockInterceptor implements Interceptor {
             final String fileName = getFilePath(uri, responseFileName);
             Log.d(TAG, "Read data from file: " + fileName);
             try {
-                final InputStream is = context.getAssets().open(fileName);
+                final InputStream is = mContext.getAssets().open(fileName);
                 final BufferedReader r = new BufferedReader(new InputStreamReader(is));
                 final StringBuilder responseStringBuilder = new StringBuilder();
                 String line;
@@ -75,8 +75,9 @@ public class MockInterceptor implements Interceptor {
                         .message(responseStringBuilder.toString())
                         .request(chain.request())
                         .protocol(Protocol.HTTP_1_0)
-                        .body(ResponseBody.create(MediaType.parse(contentType), responseStringBuilder.toString().getBytes()))
-                        .addHeader("content-type", contentType)
+                        .body(ResponseBody.create(MediaType.parse(mContentType),
+                                responseStringBuilder.toString().getBytes()))
+                        .addHeader("content-type", mContentType)
                         .build();
             } catch (final IOException e) {
                 Log.wtf(TAG, e);
@@ -92,12 +93,13 @@ public class MockInterceptor implements Interceptor {
         return response;
     }
 
-    private String getFirstFileNameExist(final List<String> inputFileNames, final URI uri) throws IOException {
+    private String getFirstFileNameExist(final List<String> inputFileNames,
+                                         final URI uri) throws IOException {
         String mockDataPath = uri.getHost() + uri.getPath();
         mockDataPath = mockDataPath.substring(0, mockDataPath.lastIndexOf('/'));
         Log.d(TAG, "Scan files in: " + mockDataPath);
         //List all files in folder
-        final String[] files = context.getAssets().list(mockDataPath);
+        final String[] files = mContext.getAssets().list(mockDataPath);
         for (final String fileName : inputFileNames) {
             if (fileName != null) {
                 for (final String file : files) {
@@ -111,7 +113,8 @@ public class MockInterceptor implements Interceptor {
     }
 
     private static String getFileName(final Chain chain) {
-        final String fileName = chain.request().url().pathSegments().get(chain.request().url().pathSegments().size() - 1);
+        final String fileName = chain.request().url().pathSegments()
+                .get(chain.request().url().pathSegments().size() - 1);
         return fileName.isEmpty() ? "index" + FILE_EXTENSION : fileName + FILE_EXTENSION;
     }
 

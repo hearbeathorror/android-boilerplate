@@ -82,7 +82,7 @@ public class MainActivity extends BaseActivity implements MainMvpView, ViewInter
 
     @Override
     public void showError() {
-        DialogFactory.createSimpleOkErrorDialog(this,"", getString(R.string.error_loading_ribots))
+        DialogFactory.createSimpleOkErrorDialog(this, "", getString(R.string.error_loading_ribots))
                 .show();
     }
 

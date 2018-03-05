@@ -18,7 +18,8 @@ public final class StringUtils {
     }
 
     public static String getBirthDate(Date birthDate) {
-        final SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_DD_MMMM_YYYY, Locale.getDefault());
+        final SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_DD_MMMM_YYYY,
+                Locale.getDefault());
         return sdf.format(birthDate);
     }
 }
